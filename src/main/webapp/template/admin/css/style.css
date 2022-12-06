@@ -4,6 +4,14 @@ body {
 	font-family: 'Varela Round', sans-serif;
 	font-size: 13px;
 }
+
+table{
+	table-layout: fixed;
+}
+
+th,td{
+	overflow:hidden;
+}
 .table-responsive {
     margin: 30px 0;
 }

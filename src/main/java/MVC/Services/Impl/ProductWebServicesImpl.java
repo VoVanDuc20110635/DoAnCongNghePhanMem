@@ -86,4 +86,22 @@ public class ProductWebServicesImpl implements IProductWebServices {
 		// TODO Auto-generated method stub
 		return productDAO.select3LastProduct();
 	}
+
+	@Override
+	public void insert(ProductModel product) {
+		productDAO.insert(product);
+		
+	}
+
+	@Override
+	public void edit(ProductModel product) {
+		productDAO.edit(product);
+		
+	}
+
+	@Override
+	public void delete(int id) {
+		productDAO.delete(id);
+		
+	}
 }

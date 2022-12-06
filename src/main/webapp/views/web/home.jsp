@@ -27,13 +27,12 @@
 						<img class="d-block w-100"
 							src="http://allonboard.no/en/wp-content/uploads/2014/02/Postcard411-855x365.jpg" alt="First slide">
 					</div>
-					<c:forEach items="${list }" var ="list">
+					<c:forEach items="${list}" var ="list">
 					<div class="carousel-item">
 						<img class="d-block w-100"
 							src="${list.productImage}"
 							alt="Second slide"
-							style="height:365px;width:855px;object-fit:contain;
-							">
+							style="height:365px;width:855px;object-fit:contain;">
 					</div>
 					</c:forEach>
 				</div>
@@ -59,12 +58,12 @@
 					style="height:40vh;">
 				<div class="card-body">
 					<h4 class="card-title text-center">
-						<a href="product.html" title="View Product">${top.productName}</a>
+						<a href="product?prodID=${top.productID}" title="View Product">${top.productName}</a>
 					</h4>
 					<h5 class="card-subtitle text-center mb-2 text-muted">${top.productPrice} vnd</h5>
 					<div class="row">
 						<div class="col">
-							<a href="product.html" class="btn btn-success btn-block">View</a>
+							<a href="product?prodID=${top.productID}" class="btn btn-success btn-block">View</a>
 						</div>
 					</div>
 				</div>
