@@ -50,7 +50,7 @@
 				</tbody>
 			</table>
 			<div class="clearfix">
-				<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+				<div class="hint-text">Showing <b>${index*3}</b> out of <b>${endPage*3}</b> entries</div>
 				<ul class="pagination">
 				<c:forEach begin="1" end="${endPage}" var="i">
 					<li class="page-item"><a href="${pageContext.request.contextPath}/admin/product/list?index=${i}" class="page-link">${i}</a></li>	
