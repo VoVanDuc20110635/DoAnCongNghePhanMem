@@ -303,8 +303,86 @@ public class ProductWebDAOImpl extends DBConnection implements IProductWebDAO {
 
 	@Override
 	public ProductModel findByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		ProductModel product = new ProductModel();
+		String sql = "select * from SanPham where MaSP = ?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				product.setProductID(rs.getInt(1));
+				product.setProductName(rs.getString(2));
+				product.setProductAmount(rs.getInt(3));
+				product.setProductPrice(rs.getInt(4));
+				product.setProductDescription(rs.getString(5));			
+				product.setProductImage(rs.getString(6));
+				product.setProductStatus(rs.getInt(7));
+				product.setCategoryID(rs.getInt(8));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return product;
+	}
+
+	@Override
+	public void insert(ProductModel product) {
+		String sql = "INSERT INTO SanPham(TenSanPham,SoLuong,GiaTien,MoTa,Anh, TinhTrang,MaDanhMuc) VALUES (?,?,?,?,?,?,?)";
+		try {
+			Connection con = super.getConnection();// kết nối datavase
+			PreparedStatement ps = con.prepareStatement(sql);// ném câu sql vào cho phát biểu prepared
+			// gán tham số
+			ps.setString(1, product.getProductName());
+			ps.setInt(2, product.getProductAmount());
+			ps.setInt(3, product.getProductPrice());
+			ps.setString(4, product.getProductDescription());
+			ps.setString(5, product.getProductImage());
+			ps.setInt(6, product.getProductStatus());
+			ps.setInt(7, product.getCategoryID());
+			// thực thi sql
+			ps.execute();// dùng để update insert delete, còn dùng select thì executeNonQuery
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+	}
+
+	@Override
+	public void edit(ProductModel product) {
+		
+		String sql = "UPDATE SanPham set TenSanPham =?,SoLuong=?,GiaTien=?,MoTa=?,Anh=?, TinhTrang=?,MaDanhMuc=? where MaSP = ?";
+		try {
+			Connection con = super.getConnection();// kết nối datavase
+			PreparedStatement ps = con.prepareStatement(sql);// ném câu sql vào cho phát biểu prepared
+			// gán tham số
+			ps.setString(1, product.getProductName());
+			ps.setInt(2, product.getProductAmount());
+			ps.setInt(3, product.getProductPrice());
+			ps.setString(4, product.getProductDescription());
+			ps.setString(5, product.getProductImage());
+			ps.setInt(6, product.getProductStatus());
+			ps.setInt(7, product.getCategoryID());
+			ps.setInt(8, product.getProductID());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void delete(int id) {
+		String sql = "Delete from SanPham where MaSP=?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
 	}
 	
 }

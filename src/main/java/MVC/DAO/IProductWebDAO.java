@@ -5,6 +5,11 @@ import java.util.List;
 import MVC.Models.ProductModel;
 
 public interface IProductWebDAO {
+	void insert(ProductModel product);
+	void edit(ProductModel product);
+	void delete(int id);
+	
+	
 	List<ProductModel> selectAll();
 	List<ProductModel> getTop4Product();
 	ProductModel topProduct();

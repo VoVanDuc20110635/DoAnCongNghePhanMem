@@ -59,7 +59,10 @@
       <c:if test="${ userRole != emptyRole }">
       	<c:if test="${ userRole.equalsIgnoreCase('admin')}">
                 <a class="btn btn-success btn-sm ml-3" href="<%=request.getContextPath() %>/admin/category/list">
-                    	Order management                  
+                    	Order management 1                 
+                </a>
+                <a class="btn btn-success btn-sm ml-3" href="<%=request.getContextPath() %>/admin/product/list">
+                    	Order management 2                 
                 </a>
          </c:if>
       
