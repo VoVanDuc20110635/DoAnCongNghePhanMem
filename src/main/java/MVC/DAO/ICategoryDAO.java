@@ -10,4 +10,6 @@ public interface ICategoryDAO {
 	void edit(CategoryModel category);
 	void delete(int id);
 	CategoryModel findByID(int id);
+	int count();
+	List<CategoryModel> pagingCategory(int index);
 }

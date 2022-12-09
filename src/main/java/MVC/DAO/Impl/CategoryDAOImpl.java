@@ -9,6 +9,7 @@ import java.util.List;
 import MVC.DAO.ICategoryDAO;
 import MVC.DBConnection.SqlConnect.DBConnection;
 import MVC.Models.CategoryModel;
+import MVC.Models.ProductModel;
 
 public class CategoryDAOImpl extends DBConnection implements ICategoryDAO {
 
@@ -149,6 +150,44 @@ public class CategoryDAOImpl extends DBConnection implements ICategoryDAO {
 			ex.printStackTrace();
 		}
 		return categories;
+	}
+
+	@Override
+	public int count() {
+		String sql = "select count(*) from DanhMuc";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				return rs.getInt(1);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public List<CategoryModel> pagingCategory(int index) {
+		List<CategoryModel> categoryList = new ArrayList<CategoryModel>();
+		String sql = "select * from DanhMuc order by MaDanhMuc OFFSET ? ROW fetch next 3 rows only";
+		try {
+			Connection conn = new DBConnection().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, (index-1)*3);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				CategoryModel category = new CategoryModel();
+				category.setCategoryID(rs.getInt(1));
+				category.setCategoryName(rs.getString(2));
+				category.setStatus(rs.getInt(3));
+				categoryList.add(category );
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return categoryList;
 	}
 
 

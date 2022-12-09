@@ -9,7 +9,8 @@ public class AccountModel {
 	private String email;
 	private Date createdDate;
 	private int roleId;
-	public AccountModel(int accountId, String userName, String passWord, String email, Date createdDate, int roleId) {
+	private int status;
+	public AccountModel(int accountId, String userName, String passWord, String email, Date createdDate, int roleId, int status) {
 		super();
 		this.accountId = accountId;
 		this.userName = userName;
@@ -17,6 +18,7 @@ public class AccountModel {
 		this.email = email;
 		this.createdDate = createdDate;
 		this.roleId = roleId;
+		this.status = status;
 	}
 	public AccountModel() {
 		super();
@@ -93,6 +95,18 @@ public class AccountModel {
 	 */
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
+	}
+	/**
+	 * @return the status
+	 */
+	public int getStatus() {
+		return status;
+	}
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	

@@ -58,9 +58,9 @@ public class ProductWebServicesImpl implements IProductWebServices {
 	}
 
 	@Override
-	public List<ProductModel> searchByProductName(String txt) {
+	public List<ProductModel> searchByProductName(String txt, int index, int pageSize) {
 		// TODO Auto-generated method stub
-		return productDAO.searchByProductName(txt);
+		return productDAO.searchByProductName(txt, index, pageSize);
 	}
 
 	@Override
@@ -103,5 +103,11 @@ public class ProductWebServicesImpl implements IProductWebServices {
 	public void delete(int id) {
 		productDAO.delete(id);
 		
+	}
+
+	@Override
+	public int countByProductNameSearch(String txt) {
+		// TODO Auto-generated method stub
+		return productDAO.countByProductNameSearch(txt);
 	}
 }

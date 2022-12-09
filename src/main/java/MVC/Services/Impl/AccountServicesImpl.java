@@ -1,5 +1,7 @@
 package MVC.Services.Impl;
 
+import java.util.List;
+
 import MVC.DAO.IAccountDAO;
 import MVC.DAO.Impl.AccountDAOImpl;
 import MVC.Models.AccountModel;
@@ -38,5 +40,47 @@ public class AccountServicesImpl implements IAccountServices {
 	public int findAccountId(String username) {
 		// TODO Auto-generated method stub
 		return accountDAO.findAccountId(username);
+	}
+
+	@Override
+	public void delete(int MaTK) {
+		accountDAO.delete(MaTK);
+		
+	}
+
+	@Override
+	public void edit(AccountModel account) {
+		accountDAO.edit(account);
+		
+	}
+
+	@Override
+	public void insert(AccountModel account) {
+		accountDAO.insert(account);
+		
+	}
+
+	@Override
+	public List<AccountModel> findAll() {
+		// TODO Auto-generated method stub
+		return accountDAO.findAll();
+	}
+
+	@Override
+	public AccountModel findById(int accountId) {
+		// TODO Auto-generated method stub
+		return accountDAO.findById(accountId);
+	}
+
+	@Override
+	public int countAll() {
+		// TODO Auto-generated method stub
+		return accountDAO.countAll();
+	}
+
+	@Override
+	public List<AccountModel> pagingAccount(int index) {
+		// TODO Auto-generated method stub
+		return accountDAO.pagingAccount(index);
 	}
 }

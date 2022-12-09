@@ -43,6 +43,16 @@ public class CategoryServicesImpl  implements ICategoryServices {
 		// TODO Auto-generated method stub
 		return cateDAO.findAllByCategoryID(id);
 	}
+	@Override
+	public List<CategoryModel> pagingCategory(int index) {
+		// TODO Auto-generated method stub
+		return cateDAO.pagingCategory(index);
+	}
+	@Override
+	public int count() {
+		// TODO Auto-generated method stub
+		return cateDAO.count();
+	}
 
 
 }

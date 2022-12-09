@@ -18,7 +18,8 @@ public interface IProductWebServices {
 	ProductModel findByID(int id);
 	int countAll();
 	int countByCategoryID(int id);
-	List<ProductModel> searchByProductName(String txt);
+	int countByProductNameSearch(String txt);
+	List<ProductModel> searchByProductName(String txt, int index, int pageSize);
 	List<ProductModel> pagingProduct(int index);
 	List<ProductModel> pagingProductByCateID(int id, int index);
 	List<ProductModel> select3LastProduct();

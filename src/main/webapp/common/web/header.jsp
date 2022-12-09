@@ -24,23 +24,22 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="category?cateID=0">Product</a>
+        <a class="nav-link active" href="category?categoryID=0">Product</a>
       </li>
       <li class="nav-item">
         <a class="nav-link inactive" href="views/cart.jsp">Cart</a>
       </li>
     </ul>
       
-    <form action="search" class="form-inline my-2 my-lg-0">
-        <a class="nav-link inactive" href="login">Cart</a>
-      <input class="form-control mr-sm-2" type="text" name="txt" placeholder="Search..." aria-label="Search">
+    <form action="search?index=1" class="form-inline my-2 my-lg-0" method="post">
+      <input value="${txtSearch}" class="form-control mr-sm-2" type="text" name="txtSearch" placeholder="Search..." aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      <a class="btn btn-success btn-sm ml-3" href="cart.jsp">
+    </form>
+    <a class="btn btn-success btn-sm ml-3" href="cart.jsp">
       	<i class="fa fa-shopping-cart"></i> Cart
       	<span class="badge bagde-light">3</span>
       </a>
-      
-      <%
+     <%
      	String rootPath = request.getContextPath();
       	String username = (String)session.getAttribute("username");      
   		String userRole = (String)session.getAttribute("userRole");
@@ -48,26 +47,21 @@
       	String emptyRole="";
       	if(username!=null){
       		String logoutPageURL = rootPath+"/common/logout";
-      		out.print("<p class='text-white m-2'>Hello " + username + "</p>");
+      		out.print("<p class='text-white m-2'>Xin chào " + username + "</p>");
     		out.print("<a href='"+ logoutPageURL + "' class='btn btn-light m-2'>Logout</a>");
       	}else{
       		String loginPageURL = rootPath + "/common/login";
     		out.print("<a href='"+ loginPageURL + "' class='btn btn-light m-2'>Login</a>");
+    		out.print("<a href='"+ registerPageURL + "' class='btn btn-light m-2'>Register</a>");
       	}
-      	out.print("<a href='"+ registerPageURL + "' class='btn btn-light m-2'>Register</a>");
+      	
       %>
       <c:if test="${ userRole != emptyRole }">
       	<c:if test="${ userRole.equalsIgnoreCase('admin')}">
-                <a class="btn btn-success btn-sm ml-3" href="<%=request.getContextPath() %>/admin/category/list">
-                    	Order management 1                 
+                <a class="btn btn-success btn-sm ml-3" href="<%=request.getContextPath() %>/admin/home">
+                    	Quản lý              
                 </a>
-                <a class="btn btn-success btn-sm ml-3" href="<%=request.getContextPath() %>/admin/product/list">
-                    	Order management 2                 
-                </a>
-         </c:if>
-      
+         </c:if>  
       </c:if>
-      
-    </form>
   </div>
 </nav>

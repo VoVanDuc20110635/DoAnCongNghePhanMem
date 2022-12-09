@@ -18,8 +18,9 @@ public interface IProductWebDAO {
 	ProductModel findByID(int id);
 	//List<ProductModel> findAllPage(int index);
 	int countAll();
+	int countByProductNameSearch(String txt);
 	int countByCategoryID(int id);
-	List<ProductModel>searchByProductName(String txt);
+	List<ProductModel>searchByProductName(String txt, int index, int pageSize);
 	List<ProductModel> pagingProduct(int index);
 	List<ProductModel> pagingProductByCateID(int id, int index);
 	List<ProductModel> select3LastProduct();

@@ -17,8 +17,9 @@ public class LogoutController extends HttpServlet{
 		resp.setContentType("text/html;charset=UTF-8");
 		HttpSession session = req.getSession();
 		session.invalidate();
-		RequestDispatcher rd = req.getRequestDispatcher("/home");
-		rd.forward(req, resp);
+		//RequestDispatcher rd = req.getRequestDispatcher("/home");
+		//rd.forward(req, resp);
+		resp.sendRedirect(req.getContextPath()  + "/home");
 	}
 	
 	

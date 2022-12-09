@@ -1,4 +1,4 @@
-package MVC.Controllers.Admin;
+package MVC.Controller.Admin;
 
 import java.io.IOException;
 import java.io.PrintWriter;

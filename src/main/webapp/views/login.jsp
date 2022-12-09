@@ -15,8 +15,9 @@
     <label class="ml-2" for="password">Password</label>
     <input type="password" name="password" class="form-control input-lg"  placeholder="Password">
   </div>
-		<div class="d-flex flex-row justify-content-between">
-				<a href="register.jsp">Quên mật khẩu??</a>
+		<div class="d-flex flex-row justify-content-between">	
+				<a href="forgetpassword.jsp">Quên mật khẩu?</a>
+				<a href="register.jsp">Đăng ký tài khoản</a>
 		</div>
 	<button type="submit" class="btn btn-primary btn-block">Submit</button>
 </form>

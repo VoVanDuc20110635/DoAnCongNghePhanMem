@@ -12,4 +12,6 @@ public interface ICategoryServices {
 	void edit(CategoryModel category);
 	void delete(int id);
 	CategoryModel findByID(int id);
+	List<CategoryModel> pagingCategory(int index);
+	int count();
 }

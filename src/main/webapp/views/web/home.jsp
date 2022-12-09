@@ -32,7 +32,7 @@
 						<img class="d-block w-100"
 							src="${list.productImage}"
 							alt="Second slide"
-							style="height:365px;width:855px;object-fit:contain;">
+							style="max-height:365px;max-width:855px;object-fit:contain;">
 					</div>
 					</c:forEach>
 				</div>
@@ -128,7 +128,7 @@
 										style="height:40vh;">
 									<div class="card-body">
 										<h5 class="card-title truncate-multi truncate-title">
-											<a class="d-block text-truncate" href="product.html" title="View Product">${p.productName }</a>
+											<a class="d-block text-truncate" href="product?prodID=${p.productID}" title="View Product">${p.productName }</a>
 										</h5>
 										<h6 class="card-subtitle mb-2 text-muted">${p.productPrice}vnd</h6>
 										<p class="card-text text-truncate truncate-multi">${p.productDescription}</p>

@@ -1,5 +1,7 @@
 package MVC.Services;
 
+import java.util.List;
+
 import MVC.Models.AccountModel;
 
 public interface IAccountServices {
@@ -8,4 +10,11 @@ public interface IAccountServices {
 	void registerAccount(String username, String password);
 	int findAdminId(String username);
 	int findAccountId(String username);
+	void delete(int MaTK);
+	void edit(AccountModel account);
+	void insert(AccountModel account);
+	List<AccountModel> findAll();
+	AccountModel findById(int accountId);
+	int countAll();
+	List<AccountModel> pagingAccount(int index);
 }
