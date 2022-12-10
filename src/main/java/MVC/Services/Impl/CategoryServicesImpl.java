@@ -53,6 +53,16 @@ public class CategoryServicesImpl  implements ICategoryServices {
 		// TODO Auto-generated method stub
 		return cateDAO.count();
 	}
+	@Override
+	public List<CategoryModel> searchByCategoryName(String txtSearch, int index, int pageSize) {
+		// TODO Auto-generated method stub
+		return cateDAO.searchByCategoryName(txtSearch, index, pageSize);
+	}
+	@Override
+	public int countByCategoryNameSearch(String txtSearch) {
+		// TODO Auto-generated method stub
+		return cateDAO.countByCategoryNameSearch(txtSearch);
+	}
 
 
 }

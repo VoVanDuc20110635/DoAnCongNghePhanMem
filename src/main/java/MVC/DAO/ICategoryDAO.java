@@ -12,4 +12,6 @@ public interface ICategoryDAO {
 	CategoryModel findByID(int id);
 	int count();
 	List<CategoryModel> pagingCategory(int index);
+	List<CategoryModel> searchByCategoryName(String txtSearch, int index, int pageSize);
+	int countByCategoryNameSearch(String txtSearch);
 }

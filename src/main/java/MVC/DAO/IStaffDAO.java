@@ -20,4 +20,8 @@ public interface IStaffDAO {
 
 	int countAll();
 
+	int countByStaffNameSearch(String txtSearch);
+
+	List<StaffModel> searchByStaffName(String txtSearch, int index, int pageSize);
+
 }

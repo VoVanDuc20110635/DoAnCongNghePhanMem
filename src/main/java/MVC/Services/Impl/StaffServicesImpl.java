@@ -53,4 +53,16 @@ public class StaffServicesImpl implements IStaffServices{
 		return staffDAO.pagingStaff(index);
 	}
 
+	@Override
+	public int countByStaffNameSearch(String txtSearch) {
+		// TODO Auto-generated method stub
+		return staffDAO.countByStaffNameSearch(txtSearch);
+	}
+
+	@Override
+	public List<StaffModel> searchByStaffName(String txtSearch, int index, int pageSize) {
+		// TODO Auto-generated method stub
+		return staffDAO.searchByStaffName(txtSearch, index, pageSize);
+	}
+
 }

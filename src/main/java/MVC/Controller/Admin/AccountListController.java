@@ -48,6 +48,8 @@ public class AccountListController extends HttpServlet {
 			doPost_Delete(req, resp);
 		} else if (action.equalsIgnoreCase("update")) {
 			doPost_Update(req, resp);
+		}else if(action.equalsIgnoreCase("search")) {
+			doPost_Search(req, resp);
 		}
 	}
 
@@ -151,6 +153,12 @@ public class AccountListController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	protected void doPost_Search(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		
+	}
+
 
 	public static void main(String args[]) {
 	}

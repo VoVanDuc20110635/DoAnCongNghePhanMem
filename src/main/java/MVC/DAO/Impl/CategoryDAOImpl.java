@@ -104,9 +104,11 @@ public class CategoryDAOImpl extends DBConnection implements ICategoryDAO {
 	}
 
 	public static void main(String args[]) {
-		CategoryDAOImpl dao = new CategoryDAOImpl();
-		CategoryModel m = new CategoryModel();
-		System.out.println(m);
+		ICategoryDAO dao = new CategoryDAOImpl();
+		List<CategoryModel> cl = new ArrayList<CategoryModel>();
+		cl = dao.searchByCategoryName("cà phê bột", 1, 3);
+		//int t = dao.countByCategoryNameSearch("Cà phê bột");
+		System.out.println(cl);
 	}
 
 	@Override
@@ -190,8 +192,49 @@ public class CategoryDAOImpl extends DBConnection implements ICategoryDAO {
 		return categoryList;
 	}
 
+	@Override
+	public List<CategoryModel> searchByCategoryName(String txtSearch, int index, int pageSize){
+		String sql = "with temp as (select ROW_NUMBER() over (order by MaDanhMuc desc) as r, * from DanhMuc where TenDanhMuc like ?)\r\n"
+				+ "select * from temp where r between ?*?-2 and ?*?";
+		List<CategoryModel> categories = new ArrayList<CategoryModel>();
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + txtSearch + "%");
+			ps.setInt(2, index);
+			ps.setInt(3, pageSize);
+			ps.setInt(4, index);
+			ps.setInt(5, pageSize);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				CategoryModel category = new CategoryModel();
+				category.setCategoryID(rs.getInt(2));
+				category.setCategoryName(rs.getString(3));
+				category.setStatus(rs.getInt(4));
+				categories.add(category);
 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return categories;
+	}
 	
-	
+	@Override
+	public int countByCategoryNameSearch(String txtSearch) {
+		String sql = "select count(*) from DanhMuc where TenDanhMuc like ?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + txtSearch + "%");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return 0;
+	}
 	
 }

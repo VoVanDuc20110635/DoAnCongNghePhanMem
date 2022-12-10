@@ -19,4 +19,8 @@ public interface IStaffServices {
 	int countAll();
 	
 	List<StaffModel> pagingStaff(int index);
+	
+	int countByStaffNameSearch(String txtSearch);
+
+	List<StaffModel> searchByStaffName(String txtSearch, int index, int pageSize);
 }

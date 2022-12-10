@@ -17,4 +17,6 @@ public interface IAccountServices {
 	AccountModel findById(int accountId);
 	int countAll();
 	List<AccountModel> pagingAccount(int index);
+	int countByAccountNameSearch(String txtSearch);
+	List<AccountModel> searchByAccountName(String txtSearch, int index, int pageSize);
 }

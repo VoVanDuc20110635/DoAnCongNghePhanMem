@@ -10,6 +10,7 @@ import java.util.List;
 import MVC.DAO.IAccountDAO;
 import MVC.DBConnection.SqlConnect.DBConnection;
 import MVC.Models.AccountModel;
+import MVC.Models.CategoryModel;
 import MVC.Models.ProductModel;
 
 public class AccountDAOImpl extends DBConnection implements IAccountDAO {
@@ -295,5 +296,54 @@ public class AccountDAOImpl extends DBConnection implements IAccountDAO {
 		}
 		return accountList;
 	}
-
+	
+	@Override
+	public List<AccountModel> searchByAccountName(String txtSearch, int index, int pageSize){
+		String sql = "with temp as (select ROW_NUMBER() over (order by MaTK desc) as r, * from TaiKhoan where TaiKhoan like ?)\r\n"
+				+ "select * from temp where r between ?*?-2 and ?*?";
+		List<AccountModel> accounts = new ArrayList<AccountModel>();
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + txtSearch + "%");
+			ps.setInt(2, index);
+			ps.setInt(3, pageSize);
+			ps.setInt(4, index);
+			ps.setInt(5, pageSize);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				AccountModel account = new AccountModel();
+				account.setAccountId(rs.getInt(2));
+				account.setUserName(rs.getString(3));
+				account.setPassWord(rs.getString(4));
+				account.setEmail(rs.getString(5));;
+				account.setCreatedDate(rs.getDate(6));
+				account.setRoleId(rs.getInt(7));
+				account.setStatus(rs.getInt(8));	
+				accounts.add(account);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return accounts;
+	}
+	
+	
+	@Override
+	public int countByAccountNameSearch(String txtSearch) {
+		String sql = "select count(*) from TaiKhoan where TaiKhoan like ?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + txtSearch + "%");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return 0;
+	}
+	
 }

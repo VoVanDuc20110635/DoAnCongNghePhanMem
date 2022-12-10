@@ -24,13 +24,9 @@ public class CategoryListController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		/*
-		 * List<CategoryModel> cateList = cateService.findAll();
-		 * req.setAttribute("categoryList", cateList); RequestDispatcher rq =
-		 * req.getRequestDispatcher("/views/admin/category/list-category.jsp");
-		 * rq.forward(req, resp);
-		 */
-
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("utf-8");
 		String action = req.getParameter("action");
 		if (action == null) {
 			doGet_All(req, resp);
@@ -80,6 +76,9 @@ public class CategoryListController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("utf-8");
 		String action = req.getParameter("action");
 		if (action.equalsIgnoreCase("create")) {
 			doPost_Create(req, resp);

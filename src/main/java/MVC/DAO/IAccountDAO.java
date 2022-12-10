@@ -18,4 +18,6 @@ public interface IAccountDAO {
 	AccountModel findById(int accountId);
 	List<AccountModel> pagingAccount(int index);
 	int countAll();
+	int countByAccountNameSearch(String txtSearch);
+	List<AccountModel> searchByAccountName(String txtSearch, int index, int pageSize);
 }	

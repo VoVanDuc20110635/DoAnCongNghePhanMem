@@ -9,12 +9,6 @@ public interface IProductWebDAO {
 	void edit(ProductModel product);
 	void delete(int id);
 	
-	
-	void insert(ProductModel product);
-	void edit(ProductModel product);
-	void delete(int id);
-	
-	
 	List<ProductModel> selectAll();
 	List<ProductModel> getTop4Product();
 	ProductModel topProduct();

@@ -21,10 +21,25 @@
 							</h2>
 						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<a href="#addAccountModal" class="btn btn-success"
 							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm
 								tài khoản</span></a>
+					</div>
+					<div class="col-sm-2">
+						<form class="form-inline"
+							action="${pageContext.request.contextPath}/admin/account/search?action=account&index=1"
+							method="post">
+							<div class="input-group input-group-sm">
+								<input type="text" value="${txtSearch}" name="txtSearch"
+									class="form-control" placeholder="Search...">
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-secondary btn-number">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -237,7 +252,7 @@
 
 						$('table .delete').on('click', function() {
 							var id = $(this).parent().find("#id").val();
-							alert(id);
+							//alert(id);
 							$('#deleteAccountModal #id').val(id);
 						});
 

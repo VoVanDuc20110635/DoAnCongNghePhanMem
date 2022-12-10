@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
 
-<div class="container-xl">
+<div class="container-xxl">
 	<div class="table-responsive">
 		<div class="table-wrapper">
 			<div class="table-title">
@@ -19,14 +19,26 @@
 							</a>
 
 							<h2>
-								Quản lý <b>Danh mục</b>
+								<a href="<%=request.getContextPath()%>/admin/category/list">Quản lý <b>Danh mục</b></a>
 							</h2>
 						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<a href="#addCategoryModal" class="btn btn-success"
 							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm
 								danh mục</span></a>
+					</div>
+					<div class="col-sm-2">
+						<form class="form-inline" action="${pageContext.request.contextPath}/admin/category/search?action=category&index=1" method="post">
+							<div class="input-group input-group-sm">
+								<input type="text" value="${txtSearch}" name="txtSearch" class="form-control" placeholder="Search...">
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-secondary btn-number">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -61,6 +73,7 @@
 					Showing <b>${index*3}</b> out of <b>${endPage*3}</b> entries
 				</div>
 				<ul class="pagination">
+					
 					<c:if test="${index > 1}">
 						<li class="page-item disabled"><a
 							href="${pageContext.request.contextPath}/admin/category/list?index=${index-1}">Previous</a></li>
@@ -82,7 +95,6 @@
 	</div>
 </div>
 <!-- Add Modal HTML -->
-<div id="addCategoryModal" class="modal fade">
 <div id="addCategoryModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -115,7 +127,6 @@
 </div>
 <!-- Edit Modal HTML -->
 <div id="editCategoryModal" class="modal fade">
-<div id="editCategoryModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<form
@@ -146,7 +157,6 @@
 	</div>
 </div>
 <!-- Delete Modal HTML -->
-<div id="deleteCategoryModal" class="modal fade">
 <div id="deleteCategoryModal" class="modal fade">
 	<div class="modal-dialog">
 		<div class="modal-content">

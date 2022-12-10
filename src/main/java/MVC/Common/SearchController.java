@@ -49,7 +49,7 @@ public class SearchController extends HttpServlet {
 			List<CategoryModel> categoryList = categoryService.findAll();
 			ProductModel topProduct = productService.topProduct();
 			
-			System.out.print(count);
+			System.out.print(count+"\n"+index+"\n"+txtSearch);
 			req.setAttribute("txtSearch", txtSearch);
 			req.setAttribute("list", productSearch);
 			req.setAttribute("listCate", categoryList);

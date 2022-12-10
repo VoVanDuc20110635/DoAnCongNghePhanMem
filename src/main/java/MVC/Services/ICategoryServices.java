@@ -14,4 +14,6 @@ public interface ICategoryServices {
 	CategoryModel findByID(int id);
 	List<CategoryModel> pagingCategory(int index);
 	int count();
+	public List<CategoryModel> searchByCategoryName(String txtSearch, int index, int pageSize);
+	int countByCategoryNameSearch(String txtSearch);
 }

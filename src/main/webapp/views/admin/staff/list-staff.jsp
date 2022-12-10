@@ -22,10 +22,25 @@
 							</h2>
 						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<a href="#addStaffModal" class="btn btn-success"
 							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm
 								Nhân Viên</span></a>
+					</div>
+					<div class="col-sm-2">
+						<form class="form-inline"
+							action="${pageContext.request.contextPath}/admin/staff/search?action=account&index=1"
+							method="post">
+							<div class="input-group input-group-sm">
+								<input type="text" value="${txtSearch}" name="txtSearch"
+									class="form-control" placeholder="Search...">
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-secondary btn-number">
+										<i class="fa fa-search"></i>
+									</button>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -225,7 +240,7 @@
 				<div class="modal-footer">
 					<input type="button" class="btn btn-default" data-dismiss="modal"
 						value="Cancel"> <input type="submit"
-						class="btn btn-danger" value="Delete"> <input type="text"
+						class="btn btn-danger" value="Delete"> <input type="hidden"
 						name="id" id="id">
 				</div>
 			</form>

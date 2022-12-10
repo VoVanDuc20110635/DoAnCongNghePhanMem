@@ -8,6 +8,7 @@ import java.util.List;
 
 import MVC.DAO.IStaffDAO;
 import MVC.DBConnection.SqlConnect.DBConnection;
+import MVC.Models.CategoryModel;
 import MVC.Models.StaffModel;
 
 
@@ -178,5 +179,65 @@ public class StaffDAOImpl extends DBConnection implements IStaffDAO  {
 		}
 		return staffs;
 	}
+	
+	
+	
+	
+	@Override
+	public List<StaffModel> searchByStaffName(String txtSearch, int index, int pageSize){
+		String sql = "with temp as (select ROW_NUMBER() over (order by MaNV desc) as r, * from NhanVien where HoTen like ?)\r\n"
+				+ "select * from temp where r between ?*?-2 and ?*?";
+		List<StaffModel> staffs = new ArrayList<StaffModel>();
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + txtSearch + "%");
+			ps.setInt(2, index);
+			ps.setInt(3, pageSize);
+			ps.setInt(4, index);
+			ps.setInt(5, pageSize);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				StaffModel staff = new StaffModel();
+				staff.setStaffID(rs.getInt(2));
+				staff.setStaffName(rs.getString(3));
+				staff.setDOB(rs.getDate(4));
+				staff.setSex(rs.getString(5));
+				staff.setStaffPhone(rs.getString(6));
+				staff.setSalaryID(rs.getString(7));
+				staff.setAccountID(rs.getInt(8));
+				staff.setStatus(rs.getInt(9));
+				staffs.add(staff);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return staffs;
+	}
+	
+
+	@Override
+	public int countByStaffNameSearch(String txtSearch) {
+		String sql = "select count(*) from NhanVien where HoTen like ?";
+		try {
+			Connection conn = super.getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, "%" + txtSearch + "%");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return 0;
+	}
+	
+	
+	
+	
+	
+	
 	
 }

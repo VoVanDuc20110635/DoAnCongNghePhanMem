@@ -83,4 +83,16 @@ public class AccountServicesImpl implements IAccountServices {
 		// TODO Auto-generated method stub
 		return accountDAO.pagingAccount(index);
 	}
+
+	@Override
+	public int countByAccountNameSearch(String txtSearch) {
+		// TODO Auto-generated method stub
+		return accountDAO.countByAccountNameSearch(txtSearch);
+	}
+
+	@Override
+	public List<AccountModel> searchByAccountName(String txtSearch, int index, int pageSize) {
+		// TODO Auto-generated method stub
+		return accountDAO.searchByAccountName(txtSearch, index, pageSize);
+	}
 }
