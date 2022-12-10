@@ -6,18 +6,19 @@
 	<div class="center">
 		<ul class="list-group">
 			<li class="list-group-item"><a
-				href="<%=request.getContextPath()%>/admin/category/list">Quản lý
-					danh mục</a></li>
+				href="<%=request.getContextPath()%>/admin/category/list"><h4>
+						Quản lý danh mục</h4></a></li>
 			<li class="list-group-item"><a
-				href="<%=request.getContextPath()%>/admin/product/list">Quản lý
-					sản phẩm</a></li>
+				href="<%=request.getContextPath()%>/admin/product/list">
+					<h4>Quản lý sản phẩm</h4>
+			</a></li>
 			<li class="list-group-item"><a
-				href="<%=request.getContextPath()%>/admin/account/list">Quản lý
-					tài khoản</a></li>
+				href="<%=request.getContextPath()%>/admin/account/list">
+					<h4>Quản lý tài khoản</h4>
+			</a></li>
 			<li class="list-group-item"><a
-				href="<%=request.getContextPath()%>/admin/staff/list"> Quản lý
-					nhân viên </a></li>
-			<li class="list-group-item">Vestibulum at eros</li>
+				href="<%=request.getContextPath()%>/admin/staff/list">
+					<h4>Quản lý nhân viên </h4></a></li>
 		</ul>
 	</div>
 </div>

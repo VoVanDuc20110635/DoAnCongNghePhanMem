@@ -19,7 +19,7 @@
 							</a>
 
 							<h2>
-								<a href="<%=request.getContextPath()%>/admin/category/list">Quản lý <b>Danh mục</b></a>
+								Quản lý <b>Danh mục</b>
 							</h2>
 						</div>
 					</div>

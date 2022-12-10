@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp" %>
@@ -12,7 +11,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="<%=request.getContextPath()%>/home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -20,16 +19,23 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
        	<c:forEach items="${listCate}" var="list">
-          <a class="dropdown-item ${tagActive==list.categoryID ? "active" : ""}" href="category?categoryID=${list.categoryID}">${list.categoryName}</a>
+          <a class="dropdown-item ${tagActive==list.categoryID ? "active" : ""}" href="<%=request.getContextPath()%>/category?categoryID=${list.categoryID}">${list.categoryName}</a>
          </c:forEach>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="category?categoryID=0">Product</a>
+        <a class="nav-link active" href="<%=request.getContextPath()%>/category?categoryID=0">Product</a>
       </li>
       <li class="nav-item">
         <a class="nav-link inactive" href="views/cart.jsp">Cart</a>
       </li>
+      <c:if test="${ userRole != emptyRole }">
+      	<c:if test="${ userRole.equalsIgnoreCase('admin')}">
+                <li class="nav-item"><a class="nav-link active" href="<%=request.getContextPath() %>/admin/home">
+                    	Quản lý              
+                </a></li>
+         </c:if>  
+      </c:if>
     </ul>
       
     <form action="search?index=1" class="form-inline my-2 my-lg-0" method="post">
@@ -44,7 +50,7 @@
      	String rootPath = request.getContextPath();
       	String username = (String)session.getAttribute("username");      
   		String userRole = (String)session.getAttribute("userRole");
-      	String registerPageURL = rootPath + "/views/register.jsp";
+      	String registerPageURL = rootPath + "/common/register";
       	String emptyRole="";
       	if(username!=null){
       		String logoutPageURL = rootPath+"/common/logout";
@@ -57,12 +63,6 @@
       	}
       	
       %>
-      <c:if test="${ userRole != emptyRole }">
-      	<c:if test="${ userRole.equalsIgnoreCase('admin')}">
-                <a class="btn btn-success btn-sm ml-3" href="<%=request.getContextPath() %>/admin/home">
-                    	Quản lý              
-                </a>
-         </c:if>  
-      </c:if>
+      
   </div>
 </nav>

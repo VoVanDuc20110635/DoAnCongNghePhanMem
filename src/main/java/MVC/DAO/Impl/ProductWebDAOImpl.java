@@ -38,7 +38,7 @@ public class ProductWebDAOImpl extends DBConnection implements IProductWebDAO {
 	@Override
 	public List<ProductModel> getTop4Product() {
 		List<ProductModel> list = new ArrayList<ProductModel>();
-		String sql = "select TOP 4 * from SanPham\n" + "order by MaSP DESC";
+		String sql = "select TOP 4 * from SanPham\n" + "order by SoLuong DESC";
 		try {
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);

@@ -44,37 +44,34 @@
 					product</div>
 				<div class="card-body">
 					<img class="img-fluid" src="${top.productImage}" />
-					<h5 class="card-title">${top.productName}</h5>
+					<h5 class="card-title text-center">${top.productName}</h5>
 					<p class="card-text">${top.productDescription}</p>
-					<p class="bloc_left_price">${top.productPrice }$</p>
+					<p class="bloc_left_price">${top.productPrice } vnd</p>
 				</div>
 			</div>
 		</div>
 		<div class="col">
 			<div class="row gy-3">
 				<c:forEach items="${list}" var="l">
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="card h-100">
-							<img class="card-img-top p-4" src="${l.productImage}"
-								alt="${l.productDescription }">
-							<div class="card-body">
+					<div class="col-lg d-flex align-items-stretch">
+						<div class="card">
+							<img class="card-img-top mb-4" src="${l.productImage}"
+								alt="${l.productDescription }"
+								style="max-height:30vh;">
+							<div class="card-body d-flex flex-column">
 								<h4 class="card-title">
-									<a class="card-title d-block truncate-multi truncate-title"
-										href="product?prodID=${l.productID}" title="View Product">${l.productName }</a>
+									<a class="text-break" href="product?productID=${l.productID}"
+										title="View Product">${l.productName }</a>
 								</h4>
-								<h5 class="card-subtitle mb-4 text-muted ">${l.productPrice}$</h5>
-								<p class="card-text truncate-multi">${l.productDescription }</p>
-								<div class="row">
-									<div class="col-12">
-										<a href="#" class="btn btn-sm h-100 btn-success btn-block">Add
-											to cart</a>
-									</div>
-								</div>
+								<h5 class="card-subtitle mb-4 text-muted ">${l.productPrice} vnd</h5>
+								<p class="card-text">${l.productDescription }</p>
+								<a href="#" class="btn mt-auto align-self-start btn-success btn-block">Add
+									to cart</a>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
-				<div class="col-12">
+				<div class="col-12 mt-4">
 					<nav aria-label="...">
 						<ul class="pagination">
 							<c:if test="${index >1}">

@@ -28,16 +28,16 @@ public class ProductController extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		String prodID = req.getParameter("prodID");
-		String cateID = req.getParameter("cateID");
+		String productID = req.getParameter("productID");
+		String categoryID = req.getParameter("categoryID");
 		//Khoi tao service
 		IProductWebServices productService = new ProductWebServicesImpl();
 		ICategoryServices categoryService = new CategoryServicesImpl();
 		//Thuc thi cac service
 		List<CategoryModel> categoryList = categoryService.findAll();
-		List<CategoryModel> categoryListID = categoryService.findAllByCategoryID(cateID);
+		List<CategoryModel> categoryListID = categoryService.findAllByCategoryID(categoryID);
  		List<ProductModel> productList = productService.selectAll();
- 		ProductModel getProductByID = productService.getProductByID(prodID);
+ 		ProductModel getProductByID = productService.getProductByID(productID);
 		//Thiet lap du lieu de call tren JSP
  		req.setAttribute("listCate", categoryList);
  		//req.setAttribute("categoryByID", categoryListID.get(1));

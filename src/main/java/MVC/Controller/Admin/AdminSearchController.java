@@ -29,19 +29,7 @@ public class AdminSearchController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
-		resp.setCharacterEncoding("utf-8");
-		String action = req.getParameter("action");
-		if (action.equalsIgnoreCase("category")) {
-			doPost_Category(req, resp);
-		} else if (action.equalsIgnoreCase("product")) {
-			doPost_Product(req, resp);
-		} else if (action.equalsIgnoreCase("account")) {
-			doPost_Account(req, resp);
-		} else if(action.equals("staff")) {
-			doPost_Staff(req, resp);
-		}
+		doGet(req, resp);
 	}
 	
 	
@@ -170,5 +158,21 @@ public class AdminSearchController extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("utf-8");
+		String action = req.getParameter("action");
+		if (action.equalsIgnoreCase("category")) {
+			doPost_Category(req, resp);
+		} else if (action.equalsIgnoreCase("product")) {
+			doPost_Product(req, resp);
+		} else if (action.equalsIgnoreCase("account")) {
+			doPost_Account(req, resp);
+		} else if(action.equals("staff")) {
+			doPost_Staff(req, resp);
+		}
+	}
 }

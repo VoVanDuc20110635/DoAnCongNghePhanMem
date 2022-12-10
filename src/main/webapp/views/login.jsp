@@ -29,8 +29,8 @@ pageEncoding="UTF-8"%> <%@ include file="/common/taglib.jsp"%>
       />
     </div>
     <div class="d-flex flex-row justify-content-between">
-      <a href="forgetpassword.jsp">Quên mật khẩu?</a>
-      <a href="register.jsp">Đăng ký tài khoản</a>
+      <a href="${pageContext.request.contextPath}/common/forgotPassword"">Quên mật khẩu?</a>
+      <a href="${pageContext.request.contextPath}/common/register">Đăng ký tài khoản</a>
     </div>
     <button type="submit" class="btn btn-primary btn-block">Submit</button>
   </form>

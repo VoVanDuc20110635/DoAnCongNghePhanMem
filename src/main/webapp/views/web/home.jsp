@@ -25,15 +25,15 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<img class="d-block w-100"
-							src="http://allonboard.no/en/wp-content/uploads/2014/02/Postcard411-855x365.jpg" alt="First slide">
+							src="http://allonboard.no/en/wp-content/uploads/2014/02/Postcard411-855x365.jpg"
+							alt="First slide">
 					</div>
-					<c:forEach items="${list}" var ="list">
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							src="${list.productImage}"
-							alt="Second slide"
-							style="max-height:365px;max-width:855px;object-fit:contain;">
-					</div>
+					<c:forEach items="${list}" var="list">
+						<div class="carousel-item">
+							<img class="d-block w-100" src="${list.productImage}"
+								alt="Second slide"
+								style="max-height: 365px; max-width: 855px; object-fit: contain;">
+						</div>
 					</c:forEach>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleIndicators"
@@ -52,18 +52,18 @@
 				<div class="card-header bg-success text-white text-uppercase">
 					<i class="fa fa-heart"></i> Top product
 				</div>
-				<img class="img-fluid border-0"
-					src="${top.productImage }"
-					alt="${top.productDescription }"
-					style="height:40vh;">
+				<img class="img-fluid border-0" src="${top.productImage }"
+					alt="${top.productDescription }" style="height: 40vh;">
 				<div class="card-body">
 					<h4 class="card-title text-center">
 						<a href="product?prodID=${top.productID}" title="View Product">${top.productName}</a>
 					</h4>
-					<h5 class="card-subtitle text-center mb-2 text-muted">${top.productPrice} vnd</h5>
+					<h5 class="card-subtitle text-center mb-2 text-muted">${top.productPrice}
+						vnd</h5>
 					<div class="row">
 						<div class="col">
-							<a href="product?prodID=${top.productID}" class="btn btn-success btn-block">View</a>
+							<a href="product?prodID=${top.productID}"
+								class="btn btn-success btn-block">View</a>
 						</div>
 					</div>
 				</div>
@@ -83,22 +83,22 @@
 				<div class="card-body">
 					<div class="row">
 						<c:forEach items="${list}" var="product">
-							<div class="col-sm">
+							<div class="col-lg d-flex align-items-stretch">
 								<div class="card">
 									<img class="card-img-top" src="${product.productImage}"
-										alt="${product.productName}" style="height:40vh;">
-									<div class="card-body">
-										<h4 class="card-title truncate-multi truncate-title">
-											<a href="product?prodID=${product.productID}" title="View Product">${product.productName }</a>
+										alt="${product.productName}" style="max-height: 50vh;">
+									<div class="card-body d-flex flex-column">
+										<h4 class="card-title">
+											<a class="text-break" href="product?productID=${product.productID}"
+												title="View Product"
+												>${product.productName }
+												</a>
 										</h4>
 										<h5 class="card-subtitle mb-2 text-muted">${product.productPrice}</h5>
-										<p class="card-text truncate-multi">${product.productDescription}</p>
-										<div class="row">				
-											<div class="col-12">
-												<a href="cart.html" class="btn btn-sm h-100 btn-success btn-block">Add
-													to cart</a>
-											</div>
-										</div>
+										<p class="card-text mb-4">${product.productDescription}</p>
+										<a href="cart.html"
+											class="btn mt-auto align-self-start btn-success btn-block">Add to
+											cart</a>
 									</div>
 								</div>
 							</div>
@@ -122,20 +122,20 @@
 						<c:forEach items="${top4product}" var="p">
 							<div class="col-sm">
 								<div class="card">
-									<img class="card-img-top"
-										src="${p.productImage }"
-										alt="${p.productName }"
-										style="height:40vh;">
+									<img class="card-img-top" src="${p.productImage }"
+										alt="${p.productName }" style="height: 40vh;">
 									<div class="card-body">
 										<h5 class="card-title truncate-multi truncate-title">
-											<a class="d-block text-truncate" href="product?prodID=${p.productID}" title="View Product">${p.productName }</a>
+											<a class="d-block text-truncate"
+												href="product?productID=${p.productID}" title="View Product">${p.productName }</a>
 										</h5>
 										<h6 class="card-subtitle mb-2 text-muted">${p.productPrice}vnd</h6>
 										<p class="card-text text-truncate truncate-multi">${p.productDescription}</p>
 										<div class="row">
 											<div class="col-12">
-												<a href="cart.html" class="btn btn-sm h-100 btn-success btn-block">Add
-													to cart</a>
+												<a href="cart.html"
+													class="btn mt-auto align-self-start btn-success btn-block">Add to
+													cart</a>
 											</div>
 										</div>
 									</div>

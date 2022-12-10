@@ -8,7 +8,7 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="row">
-							<a href="<%=request.getContextPath()%>/admin/home"
+							<a href="<%=request.getContextPath()%>/admin/staff/list"
 								style="margin-right: 20px;"> <svg
 									xmlns="http://www.w3.org/2000/svg" width="32" height="32"
 									fill="currentColor" class="bi bi-arrow-return-left"
@@ -76,16 +76,16 @@
 				<ul class="pagination">
 					<c:if test="${index > 1}">
 						<li class="page-item disabled"><a
-							href="${pageContext.request.contextPath}/admin/staff/search?index=${index-1}&txtSearch=${txtSearch}">Previous</a></li>
+							href="${pageContext.request.contextPath}/admin/staff/search?action=staff&index=${index-1}&txtSearch=${txtSearch}">Previous</a></li>
 					</c:if>
 					<c:forEach begin="1" end="${endPage}" var="i">
 						<li class="page-item ${index ==i ?"active" : "" }"><a
-							href="${pageContext.request.contextPath}/admin/staff/search?index=${i}&txtSearch=${txtSearch}"
+							href="${pageContext.request.contextPath}/admin/staff/search?action=staff&index=${i}&txtSearch=${txtSearch}"
 							class="page-link">${i}</a></li>
 					</c:forEach>
 					<c:if test="${index < endPage }">
 						<li class="page-item"><a
-							href="${pageContext.request.contextPath}/admin/staff/search?index=${index+1}&txtSearch=${txtSearch}"
+							href="${pageContext.request.contextPath}/admin/staff/search?action=staff&index=${index+1}&txtSearch=${txtSearch}"
 							class="page-link">Next</a></li>
 					</c:if>
 					<!---<c:if test="${index >1}">

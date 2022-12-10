@@ -21,6 +21,11 @@ public class LoginController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			resp.setContentType("text/html;charset=UTF-8");		
 			String username = req.getParameter("username");
@@ -38,15 +43,10 @@ public class LoginController extends HttpServlet {
 				resp.sendRedirect(req.getContextPath()+"/home");
 			}
 			else {
-				resp.sendRedirect(req.getContextPath()+"/views/login.jsp");
+				resp.sendRedirect(req.getContextPath()+"/common/login");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		doGet(req, resp);
 	}
 }
