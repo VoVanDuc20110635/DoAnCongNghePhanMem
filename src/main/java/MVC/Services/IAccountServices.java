@@ -7,8 +7,10 @@ import MVC.Models.AccountModel;
 public interface IAccountServices {
 	boolean authenticateAccount(String username, String password);
 	boolean checkDuplicateUsername(String username);
+	boolean checkValidEmail(String email);
 	String findRoleAccount(String username, String password);
 	void registerAccount(String username, String password, String email);
+	void resetPassword(String username, String email, String password);
 	int findAdminId(String username);
 	int findAccountId(String username);
 	void delete(int MaTK);

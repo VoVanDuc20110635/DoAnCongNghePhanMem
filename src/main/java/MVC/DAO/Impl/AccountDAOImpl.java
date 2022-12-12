@@ -108,14 +108,7 @@ public class AccountDAOImpl extends DBConnection implements IAccountDAO {
 	public static void main(String args[]) {
 		IAccountDAO dao = new AccountDAOImpl();
 		AccountModel ac = new AccountModel();
-		boolean a = "123".equals("123");
-		boolean t = dao.checkDuplicateUsername("tester");
-		System.out.print(a);
-		System.out.print(t);
-		if(t&&a)
-			System.out.print(t +"\n" + a);
-		else
-			System.out.print("CC");
+		dao.resetPassword("tester", "tester@gmail.com", "456");
 	}
 
 	@Override
@@ -355,6 +348,43 @@ public class AccountDAOImpl extends DBConnection implements IAccountDAO {
 			conn = super.getConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, username);
+			rs = ps.executeQuery();
+			if (rs.next())
+				isValid = true;
+			else
+				isValid = false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isValid;
+	}
+
+	public void resetPassword(String username, String email, String password) {
+		String sql = "UPDATE TaiKhoan set MatKhau=? where TaiKhoan = ? and Email = ?";
+		AccountModel account = new AccountModel();
+		try {
+			Connection con = super.getConnection();// kết nối datavase
+			PreparedStatement ps = con.prepareStatement(sql);// ném câu sql vào cho phát biểu prepared
+			// gán tham số
+			ps.setString(1, password);
+			ps.setString(2, username);
+			ps.setString(3, email);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public boolean checkValidEmail(String email) {
+		boolean isValid = false;
+		try {
+			String sql = "select * from TaiKhoan where Email = ?";
+			conn = super.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, email);
 			rs = ps.executeQuery();
 			if (rs.next())
 				isValid = true;

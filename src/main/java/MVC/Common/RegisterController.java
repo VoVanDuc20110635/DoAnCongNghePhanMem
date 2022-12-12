@@ -24,6 +24,7 @@ public class RegisterController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		boolean check;
 		try {
 			resp.setContentType("text/html;charset=UTF-8");
 			resp.setContentType("charset=UTF-8");
@@ -34,13 +35,14 @@ public class RegisterController extends HttpServlet {
 			String confirmedPassword = req.getParameter("confirmedPassword");
 			if (accountService.checkDuplicateUsername(username)==false && password.equals(confirmedPassword)) {
 				accountService.registerAccount(username, confirmedPassword, email);
-				thongBao ="Đăng ký thành công, hãy đăng nhập";
-				req.setAttribute("thongBao", thongBao);
-				//resp.sendRedirect(req.getContextPath() + "/common/login");
-				req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+				check=true;
+				resp.sendRedirect(req.getContextPath() + "/common/login");
+				//req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			} else {
+				check=false;
 				thongBao ="Đăng ký thất bại, hãy kiểm tra lại tài khoản hoặc email";
 				req.setAttribute("thongBao", thongBao);
+				req.setAttribute("check", check);
 				//resp.sendRedirect(req.getContextPath() + "/common/register");
 				req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
 			}

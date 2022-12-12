@@ -6,6 +6,7 @@
 	<div
 		class="border border-primary p-3 mb-5 shadow-lg p-3 mb-5 bg-white rounded">
 		<form action="${registerController}" method="post">
+			<div class="${check == false ? "alert alert-danger" : "d-none"}" role="alert"><p class="text-center">${thongBao}</p></div>
 			<div class="d-flex align-items-center justify-content-center mb-3">
 				Đăng ký vào hệ thống</div>
 			<div class="form-group">
@@ -20,12 +21,12 @@
 			</div>
 
 			<div class="form-group">
-				<label for="password">Password</label> <input type="password"
+				<label for="password">Mật khẩu</label> <input type="password"
 					name="password" class="form-control" id="password"
 					placeholder="Password">
 			</div>
 			<div class="form-group">
-				<label for="confirmedPassword">Confirmed Password</label> <input
+				<label for="confirmedPassword">Nhập lại mật khẩu</label> <input
 					type="password" name="confirmedPassword" class="form-control"
 					id="confirmedPassword" placeholder="Password">
 			</div>
@@ -34,7 +35,6 @@
 			<div class="text-center">
 				Nếu bạn đã có tài khoản? <a href="${pageContext.request.contextPath}/common/login">Đăng nhập</a>
 			</div>
-			<div class="text-center">${thongBao}</div>
 		</form>
 	</div>
 </section>

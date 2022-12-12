@@ -101,4 +101,16 @@ public class AccountServicesImpl implements IAccountServices {
 		// TODO Auto-generated method stub
 		return accountDAO.checkDuplicateUsername(username);
 	}
+
+	@Override
+	public void resetPassword(String username, String email, String password) {
+		accountDAO.resetPassword(username, email, password);
+		
+	}
+
+	@Override
+	public boolean checkValidEmail(String email) {
+		// TODO Auto-generated method stub
+		return accountDAO.checkValidEmail(email);
+	}
 }

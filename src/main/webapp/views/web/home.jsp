@@ -56,13 +56,13 @@
 					alt="${top.productDescription }" style="height: 40vh;">
 				<div class="card-body">
 					<h4 class="card-title text-center">
-						<a href="product?prodID=${top.productID}" title="View Product">${top.productName}</a>
+						<a href="product?productID=${top.productID}" title="View Product">${top.productName}</a>
 					</h4>
 					<h5 class="card-subtitle text-center mb-2 text-muted">${top.productPrice}
 						vnd</h5>
 					<div class="row">
 						<div class="col">
-							<a href="product?prodID=${top.productID}"
+							<a href="product?productID=${top.productID}"
 								class="btn btn-success btn-block">View</a>
 						</div>
 					</div>
