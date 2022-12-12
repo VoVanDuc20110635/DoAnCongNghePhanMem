@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%> <%@ include file="/common/taglib.jsp"%>
     method="post"
     class="border border-primary p-3 mb-5 shadow-lg bg-white rounded"
   >
+  	<p>${thongBao}</p> 
     <div class="text-center mb-3 bg-black">Đăng nhập vào hệ thống</div>
     <div class="form-group">
       <label class="ml-2" for="username">Tên tài khoản</label>
@@ -32,6 +33,6 @@ pageEncoding="UTF-8"%> <%@ include file="/common/taglib.jsp"%>
       <a href="${pageContext.request.contextPath}/common/forgotPassword"">Quên mật khẩu?</a>
       <a href="${pageContext.request.contextPath}/common/register">Đăng ký tài khoản</a>
     </div>
-    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    <button type="submit" class="btn btn-primary btn-block">Login</button> 
   </form>
 </div>

@@ -25,7 +25,7 @@
 					placeholder="Password">
 			</div>
 			<div class="form-group">
-				<label for="confirmedPassword">Password</label> <input
+				<label for="confirmedPassword">Nhập lại mật khẩu</label> <input
 					type="password" name="confirmedPassword" class="form-control"
 					id="confirmedPassword" placeholder="Password">
 			</div>
@@ -33,6 +33,7 @@
 				tài khoản</button>
 			<div class="text-center">
 				Nếu bạn đã có tài khoản? <a href="${pageContext.request.contextPath}/common/login">Đăng nhập</a>
+				<p>${thongBao}</p>
 			</div>
 		</form>
 	</div>

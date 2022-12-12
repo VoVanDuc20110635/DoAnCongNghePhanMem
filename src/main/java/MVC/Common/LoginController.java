@@ -39,11 +39,15 @@ public class LoginController extends HttpServlet {
 				if(userRole.equalsIgnoreCase("Admin")) {
 					int adminId = accountServices.findAdminId(username);
 					session.setAttribute("adminId", adminId);
-				}
+				}  
+
 				resp.sendRedirect(req.getContextPath()+"/home");
 			}
-			else {
-				resp.sendRedirect(req.getContextPath()+"/common/login");
+			else { 
+				String thongBao = "Đăng nhập không thành công";
+				req.setAttribute("thongBao", thongBao);
+				req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+//				resp.sendRedirect(req.getContextPath()+"/common/login");
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

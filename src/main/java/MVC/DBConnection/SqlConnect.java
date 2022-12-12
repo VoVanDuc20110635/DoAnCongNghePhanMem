@@ -7,12 +7,19 @@ import java.sql.DriverManager;
 public class SqlConnect {
 
 	public static class DBConnection {
-		private final String serverName = "DESKTOP-DHKSD76";
+		private final String serverName = "DESKTOP-V2MH4TM";
 		private final String dbName = "Filtro";
 		private final String portNumber = "1433";
 		private final String instance = "";
 		private final String userID = "sa";
-		private final String password = "123456";
+		private final String password = "duc2112002";
+	
+//		private final String serverName = "34.195.4.3";
+//		private final String dbName = "Filtro";
+//		private final String portNumber = "1433";
+//		private final String instance = "";
+//		private final String userID = "SA";
+//		private final String password = "MatKhau*123";
 
 		public Connection getConnection() throws Exception {
 			String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + "\\" + instance + ";databaseName="
