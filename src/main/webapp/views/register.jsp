@@ -32,10 +32,9 @@
 			<button type="submit" class="btn btn-primary btn-block mb-3">Tạo
 				tài khoản</button>
 			<div class="text-center">
-				Nếu bạn đã có tài khoản? <a
-					href="${pageContext.request.contextPath}/common/login">Đăng
-					nhập</a>
+				Nếu bạn đã có tài khoản? <a href="${pageContext.request.contextPath}/common/login">Đăng nhập</a>
 			</div>
+			<div class="text-center">${thongBao}</div>
 		</form>
 	</div>
 </section>
