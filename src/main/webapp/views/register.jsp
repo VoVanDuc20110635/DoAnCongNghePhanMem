@@ -34,7 +34,6 @@
 				tài khoản</button>
 			<div class="text-center">
 				Nếu bạn đã có tài khoản? <a href="${pageContext.request.contextPath}/common/login">Đăng nhập</a>
-				<p>${thongBao}</p>
 			</div>
 		</form>
 	</div>
