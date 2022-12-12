@@ -6,8 +6,9 @@ import MVC.Models.AccountModel;
 
 public interface IAccountDAO {
 	boolean authenticateAccount(String username, String password);
+	boolean checkDuplicateUsername(String username);
 	String findRoleAccount(String username, String password);
-	void registerAccount(String username, String password);
+	void registerAccount(String username, String password, String email);
 	int findAdminId(String username);
 	int findAccountId(String username);
 	AccountModel findByUserNameAndEmail(String username, String email);

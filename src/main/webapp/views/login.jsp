@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%> <%@ include file="/common/taglib.jsp"%>
     method="post"
     class="border border-primary p-3 mb-5 shadow-lg bg-white rounded"
   >
+  	<p>${thongBao}</p>
     <div class="text-center mb-3 bg-black">Đăng nhập vào hệ thống</div>
     <div class="form-group">
       <label class="ml-2" for="username">Tên tài khoản</label>

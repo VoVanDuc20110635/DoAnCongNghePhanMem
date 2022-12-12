@@ -24,8 +24,8 @@ public class AccountServicesImpl implements IAccountServices {
 	}
 
 	@Override
-	public void registerAccount(String username, String password) {
-		accountDAO.registerAccount(username, password);
+	public void registerAccount(String username, String password, String email) {
+		accountDAO.registerAccount(username, password, email);
 		
 	}
 
@@ -94,5 +94,11 @@ public class AccountServicesImpl implements IAccountServices {
 	public List<AccountModel> searchByAccountName(String txtSearch, int index, int pageSize) {
 		// TODO Auto-generated method stub
 		return accountDAO.searchByAccountName(txtSearch, index, pageSize);
+	}
+
+	@Override
+	public boolean checkDuplicateUsername(String username) {
+		// TODO Auto-generated method stub
+		return accountDAO.checkDuplicateUsername(username);
 	}
 }

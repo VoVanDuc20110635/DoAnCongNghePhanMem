@@ -27,14 +27,22 @@ public class RegisterController extends HttpServlet {
 		try {
 			resp.setContentType("text/html;charset=UTF-8");
 			resp.setContentType("charset=UTF-8");
+			String thongBao = "";
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
+			String email = req.getParameter("email");
 			String confirmedPassword = req.getParameter("confirmedPassword");
-			if (password.equals(confirmedPassword)) {
-				accountService.registerAccount(username, confirmedPassword);
-				resp.sendRedirect(req.getContextPath() + "/common/login");
+			if (accountService.checkDuplicateUsername(username)==false && password.equals(confirmedPassword)) {
+				accountService.registerAccount(username, confirmedPassword, email);
+				thongBao ="Đăng ký thành công, hãy đăng nhập";
+				req.setAttribute("thongBao", thongBao);
+				//resp.sendRedirect(req.getContextPath() + "/common/login");
+				req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			} else {
-				resp.sendRedirect(req.getContextPath() + "/common/register");
+				thongBao ="Đăng ký thất bại, hãy kiểm tra lại tài khoản hoặc email";
+				req.setAttribute("thongBao", thongBao);
+				//resp.sendRedirect(req.getContextPath() + "/common/register");
+				req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
