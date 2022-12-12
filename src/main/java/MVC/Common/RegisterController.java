@@ -32,9 +32,12 @@ public class RegisterController extends HttpServlet {
 		try {
 			resp.setContentType("text/html;charset=UTF-8");
 			resp.setContentType("charset=UTF-8");
+			String thongBao = "";
 			String username = req.getParameter("username");
 			String password = req.getParameter("password");
+			String email = req.getParameter("email");
 			String confirmedPassword = req.getParameter("confirmedPassword");
+<<<<<<< HEAD
 			if (password.equals(confirmedPassword)) {
 				accountService.registerAccount(username, confirmedPassword);
 				String thongBao = "Đăng ký thành công";
@@ -46,6 +49,19 @@ public class RegisterController extends HttpServlet {
 				req.setAttribute("thongBao", thongBao);
 				req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
 //				resp.sendRedirect(req.getContextPath() + "/common/register");
+=======
+			if (accountService.checkDuplicateUsername(username)==false && password.equals(confirmedPassword)) {
+				accountService.registerAccount(username, confirmedPassword, email);
+				thongBao ="Đăng ký thành công, hãy đăng nhập";
+				req.setAttribute("thongBao", thongBao);
+				//resp.sendRedirect(req.getContextPath() + "/common/login");
+				req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+			} else {
+				thongBao ="Đăng ký thất bại, hãy kiểm tra lại tài khoản hoặc email";
+				req.setAttribute("thongBao", thongBao);
+				//resp.sendRedirect(req.getContextPath() + "/common/register");
+				req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
+>>>>>>> 5d05bee6f775d3fdbf7f57a69404339b8a65ef86
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

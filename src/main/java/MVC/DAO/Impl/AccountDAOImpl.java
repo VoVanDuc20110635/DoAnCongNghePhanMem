@@ -1,7 +1,6 @@
 package MVC.DAO.Impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -10,8 +9,6 @@ import java.util.List;
 import MVC.DAO.IAccountDAO;
 import MVC.DBConnection.SqlConnect.DBConnection;
 import MVC.Models.AccountModel;
-import MVC.Models.CategoryModel;
-import MVC.Models.ProductModel;
 
 public class AccountDAOImpl extends DBConnection implements IAccountDAO {
 	public Connection conn = null;
@@ -59,13 +56,14 @@ public class AccountDAOImpl extends DBConnection implements IAccountDAO {
 	}
 
 	@Override
-	public void registerAccount(String username, String password) {
+	public void registerAccount(String username, String password, String email) {
 		try {
-			String sql = "Insert Into TaiKhoan(TaiKhoan,MatKhau,MaVaiTro) Values (?,?,3)";
+			String sql = "Insert Into TaiKhoan(TaiKhoan,MatKhau,Email,NgayTao,MaVaiTro, TinhTrang) Values (?, ?, ?, Cast(GETDATE() as Date), 3, 1)";
 			Connection conn = super.getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, username);
 			ps.setString(2, password);
+			ps.setString(3, email);
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,11 +108,14 @@ public class AccountDAOImpl extends DBConnection implements IAccountDAO {
 	public static void main(String args[]) {
 		IAccountDAO dao = new AccountDAOImpl();
 		AccountModel ac = new AccountModel();
-		List<AccountModel> acc = new ArrayList<AccountModel>();
-		acc = dao.findAll();
-		dao.delete(10);
-		for (AccountModel a : acc)
-			System.out.print(a.getStatus() + "\n");
+		boolean a = "123".equals("123");
+		boolean t = dao.checkDuplicateUsername("tester");
+		System.out.print(a);
+		System.out.print(t);
+		if(t&&a)
+			System.out.print(t +"\n" + a);
+		else
+			System.out.print("CC");
 	}
 
 	@Override
@@ -344,6 +345,26 @@ public class AccountDAOImpl extends DBConnection implements IAccountDAO {
 			ex.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public boolean checkDuplicateUsername(String username) {
+		boolean isValid = false;
+		try {
+			String sql = "select * from TaiKhoan where TaiKhoan = ?";
+			conn = super.getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			if (rs.next())
+				isValid = true;
+			else
+				isValid = false;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return isValid;
 	}
 	
 }

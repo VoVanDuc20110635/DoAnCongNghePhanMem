@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/common/taglib.jsp"%>>
+<%@ include file="/common/taglib.jsp"%>
 <c:url value="/common/register" var="registerController"></c:url>
 <section class="container w-40 mx-auto mt-5 mb-5">
 	<div
@@ -25,7 +25,11 @@
 					placeholder="Password">
 			</div>
 			<div class="form-group">
+<<<<<<< HEAD
 				<label for="confirmedPassword">Nhập lại mật khẩu</label> <input
+=======
+				<label for="confirmedPassword">Confirmed Password</label> <input
+>>>>>>> 5d05bee6f775d3fdbf7f57a69404339b8a65ef86
 					type="password" name="confirmedPassword" class="form-control"
 					id="confirmedPassword" placeholder="Password">
 			</div>
@@ -35,6 +39,7 @@
 				Nếu bạn đã có tài khoản? <a href="${pageContext.request.contextPath}/common/login">Đăng nhập</a>
 				<p>${thongBao}</p>
 			</div>
+			<div class="text-center">${thongBao}</div>
 		</form>
 	</div>
 </section>
