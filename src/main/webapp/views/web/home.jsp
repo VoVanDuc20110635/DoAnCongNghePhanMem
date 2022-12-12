@@ -11,6 +11,7 @@
 	</div>
 </section>
 <div class="container">
+	<p>${thongBao}</p> 
 	<div class="row">
 		<div class="col w-100">
 			<div id="carouselExampleIndicators" class="carousel slide"

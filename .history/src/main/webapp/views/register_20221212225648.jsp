@@ -26,7 +26,7 @@
 					placeholder="Password">
 			</div>
 			<div class="form-group">
-				<label for="confirmedPassword">Nhập lại mật khẩu</label> <input
+				<label for="confirmedPassword">Confirmed Password</label> <input
 					type="password" name="confirmedPassword" class="form-control"
 					id="confirmedPassword" placeholder="Password">
 			</div>

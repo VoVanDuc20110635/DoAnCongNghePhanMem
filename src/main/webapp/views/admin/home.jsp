@@ -20,6 +20,7 @@
 				href="<%=request.getContextPath()%>/admin/staff/list">
 					<h4>Quản lý nhân viên </h4></a></li>
 		</ul>
+		<p>${thongBao}</p> 
 	</div>
 </div>
 
